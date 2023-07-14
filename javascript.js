@@ -18,9 +18,19 @@ function calc(op) {
             output = num1 * num2; break;
     }
     document.getElementById("output").value = output;
-//Pego a conta nova e jogo ela dentro de uma variavel
-    var newHistory = "<div>" + num1 + " " + op + " " + num2 + " = " + output;
-//Concateno o que estava no "history antigo" com essa variavel, e passo isso para o "history novo"
-//Desta forma, o que for colocado fica em cima, e não embaixo 
-document.getElementById("history").innerHTML = newHistory + document.getElementById("history").innerHTML;
+    //Pego a conta nova e passo ela para dentro de uma variavel
+    var newHistory = "<p>" + num1 + " " + op + " " + num2 + " = " + output + "</p>";
+    //Passando o "history antigo" para dentro de uma variavel para facilitar
+    var history = document.getElementById("history");
+
+    //Concateno o que estava no "history antigo" com essa variavel, e passo isso para o "history novo"
+    //Desta forma, o que for colocado fica em cima, e não embaixo, e toda vez que faço isso é acrescentado um filho no history 
+    history.innerHTML = newHistory + history.innerHTML;
+
+    //se o historico passar de dez filhos
+    if (history.children.length > 10) {
+
+        //removo o 11º filho, esta escrito 10, pois os arrays começam em 0
+        history.removeChild(history.childNodes[10]);
+    }
 }
