@@ -18,4 +18,9 @@ function calc(op) {
             output = num1 * num2; break;
     }
     document.getElementById("output").value = output;
+//Pego a conta nova e jogo ela dentro de uma variavel
+    var newHistory = "<div>" + num1 + " " + op + " " + num2 + " = " + output;
+//Concateno o que estava no "history antigo" com essa variavel, e passo isso para o "history novo"
+//Desta forma, o que for colocado fica em cima, e não embaixo 
+document.getElementById("history").innerHTML = newHistory + document.getElementById("history").innerHTML;
 }
